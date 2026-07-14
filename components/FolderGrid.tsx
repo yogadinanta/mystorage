@@ -74,7 +74,7 @@ export default function FolderGrid({ folders }: FolderGridProps) {
     <section>
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-2xl font-bold text-gray-800">
-          My Folders
+          My Folder
         </h2>
 
         <button className="text-blue-600 hover:text-blue-700 font-medium">
