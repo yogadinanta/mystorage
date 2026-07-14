@@ -49,7 +49,7 @@ export default function Header({
     border-transparent
     focus:bg-white
     focus:border-blue-500
-    transition
+    transition text-gray-800
   "
 />
 
@@ -67,23 +67,8 @@ export default function Header({
             />
           </button>
 
-          <button className="relative w-11 h-11 rounded-full hover:bg-gray-100 transition">
-
-            <FontAwesomeIcon
-              icon={faBell}
-              className="text-gray-600"
-            />
-
-            <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full"/>
-
-          </button>
-
-          <button className="w-11 h-11 rounded-full hover:bg-gray-100 transition">
-            <FontAwesomeIcon
-              icon={faGear}
-              className="text-gray-600"
-            />
-          </button>
+         
+         
 
           <div className="w-px h-8 bg-gray-300"/>
 
@@ -95,7 +80,7 @@ export default function Header({
 
             <div>
 
-              <h3 className="font-semibold text-sm">
+              <h3 className="font-semibold text-sm text-gray-800">
                 I Komang Yoga
               </h3>
 

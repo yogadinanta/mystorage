@@ -190,7 +190,7 @@ export default function FileCard({ file }: FileCardProps) {
 
         <button
           onClick={() => setOpen(!open)}
-          className="w-9 h-9 rounded-full hover:bg-gray-100"
+          className="text-gray-600 w-9 h-9 rounded-full hover:bg-gray-100"
         >
           <FontAwesomeIcon icon={faEllipsisVertical} />
         </button>
@@ -200,7 +200,7 @@ export default function FileCard({ file }: FileCardProps) {
 
             <button
               onClick={previewFile}
-              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
+              className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
             >
               <FontAwesomeIcon icon={faEye} />
               Preview
@@ -210,7 +210,7 @@ export default function FileCard({ file }: FileCardProps) {
               href={fileUrl}
               target="_blank"
               download={file.original_name}
-              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
+              className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
             >
               <FontAwesomeIcon icon={faDownload} />
               Download
@@ -218,7 +218,7 @@ export default function FileCard({ file }: FileCardProps) {
 
             <button
               onClick={renameFile}
-              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
+              className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
             >
               <FontAwesomeIcon icon={faPen} />
               Rename
@@ -226,7 +226,7 @@ export default function FileCard({ file }: FileCardProps) {
 
             <button
               onClick={shareFile}
-              className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
+              className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
             >
               <FontAwesomeIcon icon={faShareNodes} />
               Share

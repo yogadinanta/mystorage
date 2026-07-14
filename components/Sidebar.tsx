@@ -131,50 +131,6 @@ export default function Sidebar({
 
       </nav>
 
-      {/* Storage */}
-
-      <div className="p-5">
-
-        <div className="bg-gray-50 border rounded-2xl p-5">
-
-          <div className="flex items-center gap-3 mb-4">
-
-            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600">
-              <FontAwesomeIcon icon={faDatabase} />
-            </div>
-
-            <div>
-
-              <h4 className="font-semibold">
-                Storage
-              </h4>
-
-              <p className="text-xs text-gray-500">
-                25 GB / 100 GB
-              </p>
-
-            </div>
-
-          </div>
-
-          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-
-            <div className="h-full w-1/4 bg-blue-600 rounded-full" />
-
-          </div>
-
-          <div className="mt-3 flex justify-between text-xs text-gray-500">
-
-            <span>25%</span>
-
-            <span>75 GB Left</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
     </aside>
   );
 }

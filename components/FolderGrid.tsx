@@ -76,10 +76,6 @@ export default function FolderGrid({ folders }: FolderGridProps) {
         <h2 className="text-2xl font-bold text-gray-800">
           My Folder
         </h2>
-
-        <button className="text-blue-600 hover:text-blue-700 font-medium">
-          View All
-        </button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -120,7 +116,7 @@ export default function FolderGrid({ folders }: FolderGridProps) {
                         folder.folder_name
                       )
                     }
-                    className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
+                    className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
                   >
                     <FontAwesomeIcon icon={faPen} />
                     Rename
@@ -130,7 +126,7 @@ export default function FolderGrid({ folders }: FolderGridProps) {
                     onClick={() =>
                       shareFolder(folder.id.toString())
                     }
-                    className="w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
+                    className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
                   >
                     <FontAwesomeIcon icon={faShareNodes} />
                     Share

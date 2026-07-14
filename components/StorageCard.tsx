@@ -67,27 +67,6 @@ export default function StorageCard({
 
         </div>
 
-        {/* Progress */}
-        <div className="mt-8">
-
-          <div className="flex justify-between text-sm mb-2">
-            <span>Used</span>
-
-            <span>{percentage.toFixed(1)}%</span>
-          </div>
-
-          <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden">
-
-            <div
-              className="h-full bg-white rounded-full transition-all duration-700"
-              style={{
-                width: `${Math.min(percentage, 100)}%`,
-              }}
-            />
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -116,7 +95,7 @@ export default function StorageCard({
 
               <div>
 
-                <h4 className="font-semibold">
+                <h4 className="font-semibold text-gray-800">
                   Folders
                 </h4>
 
@@ -150,7 +129,7 @@ export default function StorageCard({
 
               <div>
 
-                <h4 className="font-semibold">
+                <h4 className="font-semibold text-gray-800">
                   Files
                 </h4>
 
