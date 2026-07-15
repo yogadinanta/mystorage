@@ -107,7 +107,7 @@ export default function StorageCard({
 
             </div>
 
-            <span className="font-bold text-lg">
+            <span className="font-bold text-lg text-gray-700">
               {storage.totalFolders}
             </span>
 
@@ -141,57 +141,11 @@ export default function StorageCard({
 
             </div>
 
-            <span className="font-bold text-lg">
+            <span className="font-bold text-lg text-gray-700">
               {storage.totalFiles}
             </span>
 
           </div>
-
-        </div>
-
-      </div>
-
-      {/* Upgrade */}
-      <div className="mt-auto">
-
-        <div className="bg-blue-50 rounded-2xl p-5 border border-blue-100">
-
-          <div className="flex items-center gap-3 mb-3">
-
-            <FontAwesomeIcon
-              icon={faCloudArrowUp}
-              className="text-blue-600 text-2xl"
-            />
-
-            <div>
-
-              <h4 className="font-semibold text-blue-700">
-                Upgrade Storage
-              </h4>
-
-              <p className="text-xs text-blue-500">
-                Increase your cloud capacity
-              </p>
-
-            </div>
-
-          </div>
-
-          <button
-            className="
-              w-full
-              mt-2
-              bg-blue-600
-              hover:bg-blue-700
-              transition
-              text-white
-              py-3
-              rounded-xl
-              font-semibold
-            "
-          >
-            Upgrade Plan
-          </button>
 
         </div>
 

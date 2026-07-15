@@ -3,9 +3,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
-  faBell,
-  faMoon,
-  faGear,
+  faCircleUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 interface HeaderProps {
@@ -24,7 +22,7 @@ export default function Header({
       <div className="flex items-center justify-between px-8 py-5">
 
         {/* Search */}
-        <div className="w-full max-w-2xl">
+        <div className="w-full max-w-3xl">
 
           <div className="relative">
 
@@ -33,59 +31,78 @@ export default function Header({
               className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"
             />
 
-<input
-  type="text"
-  value={search}
-  onChange={(e) => onSearchChange(e.target.value)}
-  placeholder="Search files and folders..."
-  className="
-    w-full
-    h-12
-    rounded-full
-    bg-gray-100
-    pl-14
-    pr-5
-    outline-none
-    border
-    border-transparent
-    focus:bg-white
-    focus:border-blue-500
-    transition text-gray-800
-  "
-/>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => onSearchChange(e.target.value)}
+              placeholder="Search files or folders..."
+              className="
+                w-full
+                h-12
+                rounded-xl
+                bg-gray-100
+                border
+                border-gray-200
+                pl-14
+                pr-5
+                text-gray-700
+                outline-none
+                focus:bg-white
+                focus:border-blue-500
+                focus:ring-4
+                focus:ring-blue-100
+                transition
+              "
+            />
 
           </div>
 
         </div>
 
-        {/* Right */}
-        <div className="flex items-center gap-4 ml-8">
+        {/* User */}
+        <div className="ml-8 flex items-center">
 
-          <button className="w-11 h-11 rounded-full hover:bg-gray-100 transition">
-            <FontAwesomeIcon
-              icon={faMoon}
-              className="text-gray-600"
-            />
-          </button>
+          <div
+            className="
+              flex
+              items-center
+              gap-3
+              px-3
+              py-2
+              rounded-xl
+              hover:bg-gray-100
+              transition
+              cursor-pointer
+            "
+          >
 
-         
-         
-
-          <div className="w-px h-8 bg-gray-300"/>
-
-          <div className="flex items-center gap-3">
-
-            <div className="w-11 h-11 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
+            <div
+              className="
+                w-12
+                h-12
+                rounded-full
+                bg-gradient-to-br
+                from-blue-600
+                to-indigo-600
+                text-white
+                flex
+                items-center
+                justify-center
+                font-bold
+                text-lg
+                shadow
+              "
+            >
               Y
             </div>
 
-            <div>
+            <div className="hidden lg:block">
 
-              <h3 className="font-semibold text-sm text-gray-800">
+              <h3 className="font-semibold text-gray-800">
                 I Komang Yoga
               </h3>
 
-              <p className="text-xs text-gray-500">
+              <p className="text-sm text-gray-500">
                 Administrator
               </p>
 
