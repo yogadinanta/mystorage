@@ -135,6 +135,23 @@ export default function FileCard({ file }: FileCardProps) {
     window.open(fileUrl, "_blank");
   }
 
+  async function downloadFile() {
+    const res = await fetch(fileUrl);
+    const blob = await res.blob();
+
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = file.original_name;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    window.URL.revokeObjectURL(url);
+  }
+
   function shareFile() {
     navigator.clipboard.writeText(fileUrl);
     setShowToast(true);
@@ -167,15 +184,13 @@ export default function FileCard({ file }: FileCardProps) {
               Preview
             </button>
 
-            <a
-              href={fileUrl}
-              target="_blank"
-              download={file.original_name}
+            <button
+              onClick={downloadFile}
               className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
             >
               <FontAwesomeIcon icon={faDownload} />
               Download
-            </a>
+            </button>
 
             <button
               onClick={() => {

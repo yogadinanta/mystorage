@@ -32,7 +32,7 @@ export default function CreateFolderModal({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+    <div className="fixed inset-0 z-[999] bg-black/40 flex items-center justify-center">
     
     <div className="bg-white rounded-xl w-[400px] p-6 text-gray-900">
 
