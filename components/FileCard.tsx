@@ -21,7 +21,7 @@ import {
   faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
 import RenameModal from "./RenameModal";
-import DeleteModal from "./DeleteModal"; // Pastikan komponen ini sudah kamu buat
+import DeleteModal from "./DeleteModal";
 import { createPortal } from "react-dom";
 
 interface FileCardProps {
@@ -38,13 +38,18 @@ export default function FileCard({ file }: FileCardProps) {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
   
-  // Ref untuk mendeteksi klik di luar menu
-  const menuRef = useRef<HTMLDivElement>(null);
+  // Ref untuk mendeteksi area klik
+  const menuRef = useRef<HTMLDivElement>(null); // Ref untuk tombol titik tiga
+  const dropdownRef = useRef<HTMLDivElement>(null); // Ref untuk isi menu dropdown
 
-  // Efek untuk menutup menu saat klik di luar area titik tiga
+  // Efek untuk menutup menu saat klik di luar area titik tiga DAN di luar dropdown
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (
+        menuRef.current && !menuRef.current.contains(target) &&
+        (!dropdownRef.current || !dropdownRef.current.contains(target))
+      ) {
         setOpen(false);
       }
     }
@@ -53,7 +58,6 @@ export default function FileCard({ file }: FileCardProps) {
   }, []);
 
   const fileUrl = `${process.env.NEXT_PUBLIC_MINIO_URL}/${process.env.NEXT_PUBLIC_MINIO_BUCKET}/${file.storage_path}`;
-
   const ext = file.original_name.split(".").pop()?.toLowerCase() || "";
 
   function getFileIcon() {
@@ -97,7 +101,6 @@ export default function FileCard({ file }: FileCardProps) {
 
   const fileType = getFileIcon();
 
-  // Fungsi delete yang dipanggil oleh modal
   async function executeDelete() {
     const res = await fetch(`/api/files/${file.id}`, {
       method: "DELETE",
@@ -133,6 +136,7 @@ export default function FileCard({ file }: FileCardProps) {
 
   function previewFile() {
     window.open(fileUrl, "_blank");
+    setOpen(false); // Menutup menu setelah diklik
   }
 
   async function downloadFile() {
@@ -150,12 +154,13 @@ export default function FileCard({ file }: FileCardProps) {
     a.remove();
 
     window.URL.revokeObjectURL(url);
+    setOpen(false); // Menutup menu setelah diklik
   }
 
   function shareFile() {
     navigator.clipboard.writeText(fileUrl);
     setShowToast(true);
-    setOpen(false);
+    setOpen(false); // Menutup menu setelah diklik
 
     setTimeout(() => {
       setShowToast(false);
@@ -174,8 +179,16 @@ export default function FileCard({ file }: FileCardProps) {
           <FontAwesomeIcon icon={faEllipsisVertical} />
         </button>
 
-        {open && (
-          <div className="absolute right-0 mt-2 w-48 rounded-xl bg-white border shadow-xl overflow-hidden z-50">
+        {/* MENGGUNAKAN PORTAL UNTUK DROPDOWN MENU */}
+        {open && createPortal(
+          <div
+            ref={dropdownRef} // Pasang ref di sini agar tidak tertutup saat diklik
+            className="fixed z-[9999] w-48 rounded-xl bg-white border shadow-xl overflow-hidden"
+            style={{
+              top: menuRef.current ? menuRef.current.getBoundingClientRect().bottom + 8 : 0,
+              left: menuRef.current ? menuRef.current.getBoundingClientRect().right - 192 : 0, // 192px adalah lebar menu (w-48)
+            }}
+          >
             <button
               onClick={previewFile}
               className="text-gray-600 w-full px-4 py-3 flex items-center gap-3 hover:bg-gray-100"
@@ -221,7 +234,8 @@ export default function FileCard({ file }: FileCardProps) {
               <FontAwesomeIcon icon={faTrash} />
               Delete
             </button>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
 
