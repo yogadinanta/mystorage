@@ -157,15 +157,33 @@ export default function FileCard({ file }: FileCardProps) {
     setOpen(false); // Menutup menu setelah diklik
   }
 
-  function shareFile() {
-    navigator.clipboard.writeText(fileUrl);
+async function shareFile() {
+  try {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(fileUrl);
+    } else {
+      // Fallback untuk HTTP
+      const input = document.createElement("input");
+      input.value = fileUrl;
+      document.body.appendChild(input);
+
+      input.select();
+      document.execCommand("copy");
+
+      document.body.removeChild(input);
+    }
+
     setShowToast(true);
-    setOpen(false); // Menutup menu setelah diklik
+    setOpen(false);
 
     setTimeout(() => {
       setShowToast(false);
     }, 2500);
+  } catch (err) {
+    alert("Gagal menyalin link.");
+    console.error(err);
   }
+}
 
   return (
     <div className="relative bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-xl hover:-translate-y-1 transition duration-300">
