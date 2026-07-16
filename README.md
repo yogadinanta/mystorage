@@ -1,18 +1,29 @@
 # 📁 MyStorage - Clone Google Drive
 
-MyStorage merupakan aplikasi penyimpanan file berbasis web yang terinspirasi dari Google Drive. Aplikasi ini dibangun menggunakan Next.js, Prisma ORM, MySQL, Docker, dan MinIO sebagai object storage.
-
-Project ini dibuat untuk memenuhi tugas UAS Mata Kuliah **Cloud Technology & Human Computer Interaction (HCI)**.
+MyStorage merupakan aplikasi penyimpanan file berbasis web yang terinspirasi dari Google Drive. Project ini dikembangkan menggunakan Next.js, Prisma ORM, MySQL, MinIO, dan Docker sebagai tugas UAS Mata Kuliah Cloud Technology & Human Computer Interaction (HCI).
 
 ---
 
-Akses
+## Tim Pengembang
 
-```
-Public Hosting By AWS EC 2: http://52.200.204.33:3000/
-Min io: http://52.200.204.33:9001/
-http://localhost:3000
-```
+| Nama | NIM | Peran |
+|------|-----|-------|
+| I Made Agus Arya Primahesa Putra | XXXXXXXX | PERAN |
+| Made Dwiki Premananda Ariyadnya | XXXXXXXX | PERAN |
+| Wisnu Bagus Indrayani | XXXXXXXX | UI/UX PERAN |
+| I Komang Yoga Dinanta | 2415323030 | PERAN |
+| Gede Satya Budi Dharma Wiguna | XXXXXXXX | PERAN |
+
+---
+
+## 🌐 Deployment
+
+**Status:** ✅ Sudah di-deploy pada AWS EC2
+
+- Website : http://52.200.204.33:3000/
+- MinIO : http://52.200.204.33:9001/
+
+---
 
 ## 🚀 Teknologi
 
@@ -22,88 +33,43 @@ http://localhost:3000
 - Tailwind CSS
 - Prisma ORM
 - MySQL
-- MinIO Object Storage
+- MinIO
 - Docker & Docker Compose
-- FontAwesome
 
 ---
 
 ## ✨ Fitur
 
 ### Folder
-- ✅ Membuat Folder
-- ✅ Rename Folder
-- ✅ Hapus Folder
-- ✅ Menampilkan seluruh folder
+- Create Folder
+- Rename Folder
+- Delete Folder
 
 ### File
-- ✅ Upload File ke MinIO
-- ✅ Preview File
-- ✅ Download File
-- ✅ Rename File
-- ✅ Delete File
-- ✅ Share Link File
-- ✅ Menampilkan daftar file terbaru
+- Upload File
+- Preview File
+- Download File
+- Rename File
+- Delete File
+- Share Link
 
 ### Dashboard
-- ✅ Storage Summary
-- ✅ Total Folder
-- ✅ Total File
-- ✅ Total Storage Used
+- Storage Summary
+- Total Folder
+- Total File
+- Recent Files
 
-### Search
-- ✅ Search Folder
-- ✅ Search File
-
-### UX
-- ✅ Loading saat upload
-- ✅ Responsive Layout
-- ✅ Toast Notification
-- ✅ Modern UI
+### Lainnya
+- Search Folder & File
+- Responsive UI
+- Loading Upload
+- Toast Notification
 
 ---
 
-# Struktur Project
+## 🗄 Database
 
-```
-app/
-│
-├── api/
-│   ├── files/
-│   ├── folders/
-│
-├── folder/
-│
-├── HomeClient.tsx
-└── page.tsx
-
-components/
-│
-├── FileCard.tsx
-├── FileTable.tsx
-├── FolderGrid.tsx
-├── Header.tsx
-├── Sidebar.tsx
-├── StorageCard.tsx
-├── UploadFile.tsx
-├── CreateFolderModal.tsx
-└── RenameModal.tsx
-
-lib/
-│
-├── prisma.ts
-└── minio.ts
-
-prisma/
-│
-└── schema.prisma
-```
-
----
-
-# Database
-
-Menggunakan MySQL dengan Prisma ORM.
+Database menggunakan **MySQL** dengan **Prisma ORM**.
 
 Tabel utama:
 
@@ -116,55 +82,30 @@ Tabel utama:
 
 ---
 
-# Object Storage
+## ☁ Object Storage
 
-Menggunakan MinIO.
+Object Storage menggunakan **MinIO**.
 
-Struktur penyimpanan:
-
-```
-mystorage
-│
-└── folder
-    ├── 1
-    ├── 2
-    ├── 3
-    └── ...
-```
-
-Contoh object:
+Contoh struktur:
 
 ```
-folder/1/1752658231-asd12f.pdf
+mystorage/
+└── folder/
+    └── {folderId}/
+        └── filename.ext
 ```
-
-Metadata file disimpan pada MySQL.
 
 ---
 
-# Instalasi
-
-## Clone Repository
+## ⚙ Instalasi
 
 ```bash
 git clone https://github.com/username/mystorage.git
-```
 
-Masuk ke project
-
-```bash
 cd mystorage
-```
 
-Install dependency
-
-```bash
 npm install
 ```
-
----
-
-# Environment
 
 Buat file `.env`
 
@@ -177,173 +118,46 @@ MINIO_USE_SSL=false
 
 MINIO_ACCESS_KEY=minioadmin
 MINIO_SECRET_KEY=minioadmin
-
-NEXT_PUBLIC_MINIO_URL=http://localhost:9000
-NEXT_PUBLIC_MINIO_BUCKET=mystorage
 ```
 
----
-
-# Prisma
-
-Generate Client
+Generate Prisma
 
 ```bash
 npx prisma generate
 ```
 
-Migrasi
-
-```bash
-npx prisma migrate dev
-```
-
-atau jika database sudah tersedia
-
-```bash
-npx prisma db pull
-npx prisma generate
-```
-
----
-
-# Menjalankan Project
-
-```bash
-npm run dev
-```
-
-Akses
-
-```
-Public Hosting By AWS EC 2: http://52.200.204.33:3000/
-http://localhost:3000
-```
-
----
-
-# Docker
-
-Menjalankan MinIO menggunakan Docker
+Jalankan MinIO
 
 ```bash
 docker compose up -d
 ```
 
-atau
+Jalankan aplikasi
 
 ```bash
-docker-compose up -d
+npm run dev
 ```
 
 ---
 
-# Cara Penggunaan
+## 📷 Screenshot
 
-### Membuat Folder
-
-Klik tombol **New Folder** kemudian masukkan nama folder.
-
-### Upload File
-
-Masuk ke folder kemudian klik **Upload**.
-
-### Rename
-
-Klik menu **⋮** pada file kemudian pilih **Rename**.
-
-### Delete
-
-Klik menu **⋮** kemudian pilih **Delete**.
-
-### Preview
-
-Klik file atau pilih **Preview**.
-
-### Download
-
-Klik menu **Download**.
-
-### Share
-
-Klik menu **Share** untuk menyalin link file.
-
----
-
-# Screenshot
-
-Tambahkan screenshot aplikasi pada folder berikut:
+Tambahkan screenshot aplikasi pada folder:
 
 ```
-/screenshots
+screenshots/
 ```
 
 Contoh:
 
-```
-dashboard.png
-folder.png
-upload.png
-preview.png
-share.png
-```
+- Dashboard
+- Folder
+- Upload
+- Preview
+- Share
 
 ---
 
-# Author
-I Made Agus Arya Primahesa Putra
-Made Dwiki Premananda Ariyadnya
-Wisnu Bagus Indrayani
-I Komang Yoga Dinanta
-Gede Satya Budi Dharma Wiguna
+## 📄 Lisensi
 
-Politeknik Negeri Bali
-
-Program Studi D3 Manajemen Informatika
-
-2026
-
----
-
-# Lisensi
-
-Project ini dibuat untuk keperluan akademik pada Mata Kuliah Cloud Technology & HCI.
-
-
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Project ini dibuat untuk keperluan akademik sebagai tugas UAS Mata Kuliah Cloud Technology & HCI, Politeknik Negeri Bali (2026).
