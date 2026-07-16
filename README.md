@@ -8,11 +8,11 @@ MyStorage merupakan aplikasi penyimpanan file berbasis web yang terinspirasi dar
 
 | Nama | NIM | Peran |
 |------|-----|-------|
-| I Made Agus Arya Primahesa Putra | XXXXXXXX | PERAN |
-| Made Dwiki Premananda Ariyadnya | XXXXXXXX | PERAN |
-| Wisnu Bagus Indrayani | XXXXXXXX | UI/UX PERAN |
-| I Komang Yoga Dinanta | 2415323030 | PERAN |
-| Gede Satya Budi Dharma Wiguna | XXXXXXXX | PERAN |
+| I Made Agus Arya Primahesa Putra | 2415323002 | BUG HUNTER , LOGO DESIGN |
+| Made Dwiki Premananda Ariyadnya | 2415323008 | BUG FIXING |
+| Wisnu Bagus Indrayani | 2415323020 | DEPLOYMENT , FRONTEND |
+| Gede Satya Budi Dharma Wiguna | 2415323022 | USER TESTING |
+| I Komang Yoga Dinanta | 2415323030 | BACKEND , UI/UX  |
 
 ---
 
